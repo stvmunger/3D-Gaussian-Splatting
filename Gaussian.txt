@@ -1,0 +1,806 @@
+(nerf) kevin@Venus:~/projects/Gaussian/extern/gaussian-splatting$ cd ~/projects/Gaussian
+(nerf) kevin@Venus:~/projects/Gaussian$ mkdir -p data
+(nerf) kevin@Venus:~/projects/Gaussian$ cd data
+(nerf) kevin@Venus:~/projects/Gaussian/data$ mkdir -p my_object
+(nerf) kevin@Venus:~/projects/Gaussian/data$ cd my_object
+(nerf) kevin@Venus:~/projects/Gaussian/data/my_object$ mkdir -p input
+(nerf) kevin@Venus:~/projects/Gaussian/data/my_object$ cd ~/projects/Gaussian/data/my_object
+(nerf) kevin@Venus:~/projects/Gaussian/data/my_object$ colmap database_creator --database_path database.db
+(nerf) kevin@Venus:~/projects/Gaussian/data/my_object$ mkdir -p sparse
+
+1 特征提取 全量匹配 建图
+
+(nerf) kevin@Venus:~/projects/Gaussian/data/my_object$ colmap feature_extractor \
+    --database_path database.db \
+    --image_path    input \
+    --ImageReader.single_camera 1 \
+    --SiftExtraction.use_gpu 1 \
+    --SiftExtraction.estimate_affine_shape true \
+    --SiftExtraction.domain_size_pooling    true
+W0619 18:16:44.852399  3748 feature_extraction.cc:390] Your current options use the maximum number of threads on the machine to extract features. Extracting SIFT features on the CPU can consume a lot of RAM per thread for large images. Consider reducing the maximum image size and/or the first octave or manually limit the number of extraction threads. Ignore this warning, if your machine has sufficient memory for the current settings.
+I0619 18:16:44.853796  3780 misc.cc:44]
+==============================================================================
+Feature extraction
+==============================================================================
+I0619 18:16:44.857744  3844 sift.cc:717] Creating Covariant SIFT CPU feature extractor
+I0619 18:16:44.857805  3829 sift.cc:717] Creating Covariant SIFT CPU feature extractor
+I0619 18:16:44.857833  3814 sift.cc:717] Creating Covariant SIFT CPU feature extractor
+I0619 18:16:44.857856  3843 sift.cc:717] Creating Covariant SIFT CPU feature extractor
+I0619 18:16:44.857873  3813 sift.cc:717] Creating Covariant SIFT CPU feature extractor
+I0619 18:16:44.857895  3842 sift.cc:717] Creating Covariant SIFT CPU feature extractor
+I0619 18:16:44.857916  3840 sift.cc:717] Creating Covariant SIFT CPU feature extractor
+I0619 18:16:44.857936  3841 sift.cc:717] Creating Covariant SIFT CPU feature extractor
+I0619 18:16:44.857961  3839 sift.cc:717] Creating Covariant SIFT CPU feature extractor
+I0619 18:16:44.857980  3816 sift.cc:717] Creating Covariant SIFT CPU feature extractor
+I0619 18:16:44.858000  3819 sift.cc:717] Creating Covariant SIFT CPU feature extractor
+I0619 18:16:44.858021  3820 sift.cc:717] Creating Covariant SIFT CPU feature extractor
+I0619 18:16:44.858043  3821 sift.cc:717] Creating Covariant SIFT CPU feature extractor
+I0619 18:16:44.858063  3835 sift.cc:717] Creating Covariant SIFT CPU feature extractor
+I0619 18:16:44.858085  3836 sift.cc:717] Creating Covariant SIFT CPU feature extractor
+I0619 18:16:44.858111  3837 sift.cc:717] Creating Covariant SIFT CPU feature extractor
+I0619 18:16:44.858167  3838 sift.cc:717] Creating Covariant SIFT CPU feature extractor
+I0619 18:16:44.858206  3817 sift.cc:717] Creating Covariant SIFT CPU feature extractor
+I0619 18:16:44.858310  3815 sift.cc:717] Creating Covariant SIFT CPU feature extractor
+I0619 18:16:44.858342  3828 sift.cc:717] Creating Covariant SIFT CPU feature extractor
+I0619 18:16:44.858361  3831 sift.cc:717] Creating Covariant SIFT CPU feature extractor
+I0619 18:16:44.858381  3830 sift.cc:717] Creating Covariant SIFT CPU feature extractor
+I0619 18:16:44.858425  3832 sift.cc:717] Creating Covariant SIFT CPU feature extractor
+I0619 18:16:44.858456  3833 sift.cc:717] Creating Covariant SIFT CPU feature extractor
+I0619 18:16:44.858475  3834 sift.cc:717] Creating Covariant SIFT CPU feature extractor
+I0619 18:16:44.858494  3822 sift.cc:717] Creating Covariant SIFT CPU feature extractor
+I0619 18:16:44.858513  3825 sift.cc:717] Creating Covariant SIFT CPU feature extractor
+I0619 18:16:44.858530  3823 sift.cc:717] Creating Covariant SIFT CPU feature extractor
+I0619 18:16:44.858547  3824 sift.cc:717] Creating Covariant SIFT CPU feature extractor
+I0619 18:16:44.858565  3826 sift.cc:717] Creating Covariant SIFT CPU feature extractor
+I0619 18:16:44.858589  3827 sift.cc:717] Creating Covariant SIFT CPU feature extractor
+I0619 18:16:44.858608  3818 sift.cc:717] Creating Covariant SIFT CPU feature extractor
+I0619 18:16:59.280527  3845 feature_extraction.cc:258] Processed file [1/43]
+I0619 18:16:59.280604  3845 feature_extraction.cc:261]   Name:            0008.jpg
+I0619 18:16:59.280607  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:16:59.280609  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:16:59.280613  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:16:59.280624  3845 feature_extraction.cc:280]   Features:        9019
+I0619 18:16:59.874915  3845 feature_extraction.cc:258] Processed file [2/43]
+I0619 18:16:59.874994  3845 feature_extraction.cc:261]   Name:            0011.jpg
+I0619 18:16:59.874998  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:16:59.875000  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:16:59.875005  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:16:59.875016  3845 feature_extraction.cc:280]   Features:        9813
+I0619 18:16:59.877415  3845 feature_extraction.cc:258] Processed file [3/43]
+I0619 18:16:59.877441  3845 feature_extraction.cc:261]   Name:            0010.jpg
+I0619 18:16:59.877444  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:16:59.877446  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:16:59.877449  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:16:59.877456  3845 feature_extraction.cc:280]   Features:        10146
+I0619 18:17:00.082837  3845 feature_extraction.cc:258] Processed file [4/43]
+I0619 18:17:00.082888  3845 feature_extraction.cc:261]   Name:            0009.jpg
+I0619 18:17:00.082891  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:00.082893  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:00.082897  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:00.082906  3845 feature_extraction.cc:280]   Features:        9455
+I0619 18:17:00.325867  3845 feature_extraction.cc:258] Processed file [5/43]
+I0619 18:17:00.325932  3845 feature_extraction.cc:261]   Name:            0007.jpg
+I0619 18:17:00.325934  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:00.325937  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:00.325939  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:00.325951  3845 feature_extraction.cc:280]   Features:        10480
+I0619 18:17:01.131139  3845 feature_extraction.cc:258] Processed file [6/43]
+I0619 18:17:01.131222  3845 feature_extraction.cc:261]   Name:            0012.jpg
+I0619 18:17:01.131227  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:01.131228  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:01.131232  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:01.131242  3845 feature_extraction.cc:280]   Features:        10776
+I0619 18:17:01.201994  3845 feature_extraction.cc:258] Processed file [7/43]
+I0619 18:17:01.202050  3845 feature_extraction.cc:261]   Name:            0015.jpg
+I0619 18:17:01.202054  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:01.202055  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:01.202059  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:01.202069  3845 feature_extraction.cc:280]   Features:        8926
+I0619 18:17:02.525561  3845 feature_extraction.cc:258] Processed file [8/43]
+I0619 18:17:02.525635  3845 feature_extraction.cc:261]   Name:            0029.jpg
+I0619 18:17:02.525637  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:02.525640  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:02.525642  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:02.525655  3845 feature_extraction.cc:280]   Features:        8040
+I0619 18:17:02.737447  3845 feature_extraction.cc:258] Processed file [9/43]
+I0619 18:17:02.737500  3845 feature_extraction.cc:261]   Name:            0017.jpg
+I0619 18:17:02.737502  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:02.737504  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:02.737509  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:02.737517  3845 feature_extraction.cc:280]   Features:        9159
+I0619 18:17:03.635265  3845 feature_extraction.cc:258] Processed file [10/43]
+I0619 18:17:03.635377  3845 feature_extraction.cc:261]   Name:            0030.jpg
+I0619 18:17:03.635392  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:03.635396  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:03.635399  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:03.635409  3845 feature_extraction.cc:280]   Features:        9446
+I0619 18:17:03.644572  3845 feature_extraction.cc:258] Processed file [11/43]
+I0619 18:17:03.645028  3845 feature_extraction.cc:261]   Name:            0013.jpg
+I0619 18:17:03.645049  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:03.645052  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:03.645056  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:03.645066  3845 feature_extraction.cc:280]   Features:        12457
+I0619 18:17:03.783003  3845 feature_extraction.cc:258] Processed file [12/43]
+I0619 18:17:03.783059  3845 feature_extraction.cc:261]   Name:            0014.jpg
+I0619 18:17:03.783061  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:03.783063  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:03.783067  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:03.783080  3845 feature_extraction.cc:280]   Features:        10445
+I0619 18:17:04.753002  3845 feature_extraction.cc:258] Processed file [13/43]
+I0619 18:17:04.753059  3845 feature_extraction.cc:261]   Name:            0031.jpg
+I0619 18:17:04.753062  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:04.753064  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:04.753068  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:04.753082  3845 feature_extraction.cc:280]   Features:        9134
+I0619 18:17:04.794651  3845 feature_extraction.cc:258] Processed file [14/43]
+I0619 18:17:04.794745  3845 feature_extraction.cc:261]   Name:            0016.jpg
+I0619 18:17:04.794755  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:04.794757  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:04.794767  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:04.794778  3845 feature_extraction.cc:280]   Features:        10565
+I0619 18:17:05.285208  3845 feature_extraction.cc:258] Processed file [15/43]
+I0619 18:17:05.285270  3845 feature_extraction.cc:261]   Name:            0006.jpg
+I0619 18:17:05.285272  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:05.285274  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:05.285279  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:05.285288  3845 feature_extraction.cc:280]   Features:        15040
+I0619 18:17:05.532438  3845 feature_extraction.cc:258] Processed file [16/43]
+I0619 18:17:05.532518  3845 feature_extraction.cc:261]   Name:            0021.jpg
+I0619 18:17:05.532526  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:05.532528  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:05.532532  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:05.532546  3845 feature_extraction.cc:280]   Features:        12058
+I0619 18:17:05.592118  3845 feature_extraction.cc:258] Processed file [17/43]
+I0619 18:17:05.592173  3845 feature_extraction.cc:261]   Name:            0001.jpg
+I0619 18:17:05.592185  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:05.592188  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:05.592193  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:05.592239  3845 feature_extraction.cc:280]   Features:        20782
+I0619 18:17:05.832760  3845 feature_extraction.cc:258] Processed file [18/43]
+I0619 18:17:05.832813  3845 feature_extraction.cc:261]   Name:            0005.jpg
+I0619 18:17:05.832818  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:05.832820  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:05.832823  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:05.832859  3845 feature_extraction.cc:280]   Features:        15586
+I0619 18:17:06.200800  3845 feature_extraction.cc:258] Processed file [19/43]
+I0619 18:17:06.200909  3845 feature_extraction.cc:261]   Name:            0023.jpg
+I0619 18:17:06.200968  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:06.201010  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:06.201061  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:06.201123  3845 feature_extraction.cc:280]   Features:        12447
+I0619 18:17:06.436455  3845 feature_extraction.cc:258] Processed file [20/43]
+I0619 18:17:06.436530  3845 feature_extraction.cc:261]   Name:            0020.jpg
+I0619 18:17:06.436537  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:06.436539  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:06.436543  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:06.436573  3845 feature_extraction.cc:280]   Features:        8655
+I0619 18:17:06.478834  3845 feature_extraction.cc:258] Processed file [21/43]
+I0619 18:17:06.478904  3845 feature_extraction.cc:261]   Name:            0004.jpg
+I0619 18:17:06.478909  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:06.478911  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:06.478914  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:06.478940  3845 feature_extraction.cc:280]   Features:        19340
+I0619 18:17:06.642928  3845 feature_extraction.cc:258] Processed file [22/43]
+I0619 18:17:06.642992  3845 feature_extraction.cc:261]   Name:            0002.jpg
+I0619 18:17:06.642998  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:06.643000  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:06.643003  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:06.643013  3845 feature_extraction.cc:280]   Features:        22423
+I0619 18:17:07.023919  3845 feature_extraction.cc:258] Processed file [23/43]
+I0619 18:17:07.024015  3845 feature_extraction.cc:261]   Name:            0003.jpg
+I0619 18:17:07.024070  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:07.024116  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:07.024166  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:07.024221  3845 feature_extraction.cc:280]   Features:        20061
+I0619 18:17:07.252776  3845 feature_extraction.cc:258] Processed file [24/43]
+I0619 18:17:07.252842  3845 feature_extraction.cc:261]   Name:            0022.jpg
+I0619 18:17:07.252848  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:07.252851  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:07.252853  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:07.252878  3845 feature_extraction.cc:280]   Features:        14153
+I0619 18:17:07.449061  3845 feature_extraction.cc:258] Processed file [25/43]
+I0619 18:17:07.449132  3845 feature_extraction.cc:261]   Name:            0019.jpg
+I0619 18:17:07.449139  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:07.449141  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:07.449144  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:07.449151  3845 feature_extraction.cc:280]   Features:        14744
+I0619 18:17:07.870509  3845 feature_extraction.cc:258] Processed file [26/43]
+I0619 18:17:07.870605  3845 feature_extraction.cc:261]   Name:            0032.jpg
+I0619 18:17:07.870617  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:07.870656  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:07.870703  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:07.870756  3845 feature_extraction.cc:280]   Features:        14663
+I0619 18:17:08.223702  3845 feature_extraction.cc:258] Processed file [27/43]
+I0619 18:17:08.223791  3845 feature_extraction.cc:261]   Name:            0018.jpg
+I0619 18:17:08.223802  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:08.223806  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:08.223858  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:08.223910  3845 feature_extraction.cc:280]   Features:        17733
+I0619 18:17:08.659968  3845 feature_extraction.cc:258] Processed file [28/43]
+I0619 18:17:08.660036  3845 feature_extraction.cc:261]   Name:            0034.jpg
+I0619 18:17:08.660043  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:08.660044  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:08.660048  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:08.660072  3845 feature_extraction.cc:280]   Features:        11945
+I0619 18:17:08.799338  3845 feature_extraction.cc:258] Processed file [29/43]
+I0619 18:17:08.799427  3845 feature_extraction.cc:261]   Name:            0028.jpg
+I0619 18:17:08.799476  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:08.799520  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:08.799564  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:08.799582  3845 feature_extraction.cc:280]   Features:        14930
+I0619 18:17:09.598021  3845 feature_extraction.cc:258] Processed file [30/43]
+I0619 18:17:09.598102  3845 feature_extraction.cc:261]   Name:            0042.jpg
+I0619 18:17:09.598150  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:09.598161  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:09.598166  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:09.598207  3845 feature_extraction.cc:280]   Features:        9277
+I0619 18:17:09.858209  3845 feature_extraction.cc:258] Processed file [31/43]
+I0619 18:17:09.858280  3845 feature_extraction.cc:261]   Name:            0043.jpg
+I0619 18:17:09.858286  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:09.858289  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:09.858291  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:09.858320  3845 feature_extraction.cc:280]   Features:        9527
+I0619 18:17:10.414443  3845 feature_extraction.cc:258] Processed file [32/43]
+I0619 18:17:10.414592  3845 feature_extraction.cc:261]   Name:            0035.jpg
+I0619 18:17:10.414603  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:10.414606  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:10.414611  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:10.414631  3845 feature_extraction.cc:280]   Features:        9006
+I0619 18:17:10.565791  3845 feature_extraction.cc:258] Processed file [33/43]
+I0619 18:17:10.565850  3845 feature_extraction.cc:261]   Name:            0036.jpg
+I0619 18:17:10.565858  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:10.565860  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:10.565863  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:10.565871  3845 feature_extraction.cc:280]   Features:        9236
+I0619 18:17:11.074913  3845 feature_extraction.cc:258] Processed file [34/43]
+I0619 18:17:11.074993  3845 feature_extraction.cc:261]   Name:            0041.jpg
+I0619 18:17:11.075004  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:11.075008  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:11.075012  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:11.075057  3845 feature_extraction.cc:280]   Features:        9955
+I0619 18:17:11.101810  3845 feature_extraction.cc:258] Processed file [35/43]
+I0619 18:17:11.101864  3845 feature_extraction.cc:261]   Name:            0040.jpg
+I0619 18:17:11.101871  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:11.101872  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:11.101876  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:11.101898  3845 feature_extraction.cc:280]   Features:        9619
+I0619 18:17:11.160907  3845 feature_extraction.cc:258] Processed file [36/43]
+I0619 18:17:11.160979  3845 feature_extraction.cc:261]   Name:            0027.jpg
+I0619 18:17:11.160990  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:11.160995  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:11.160998  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:11.161041  3845 feature_extraction.cc:280]   Features:        9074
+I0619 18:17:11.217728  3845 feature_extraction.cc:258] Processed file [37/43]
+I0619 18:17:11.217805  3845 feature_extraction.cc:261]   Name:            0039.jpg
+I0619 18:17:11.217816  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:11.217819  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:11.217823  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:11.217865  3845 feature_extraction.cc:280]   Features:        12063
+I0619 18:17:11.317719  3845 feature_extraction.cc:258] Processed file [38/43]
+I0619 18:17:11.317803  3845 feature_extraction.cc:261]   Name:            0026.jpg
+I0619 18:17:11.317849  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:11.317888  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:11.317930  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:11.317976  3845 feature_extraction.cc:280]   Features:        9236
+I0619 18:17:12.384896  3845 feature_extraction.cc:258] Processed file [39/43]
+I0619 18:17:12.384976  3845 feature_extraction.cc:261]   Name:            0037.jpg
+I0619 18:17:12.385022  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:12.385061  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:12.385077  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:12.385116  3845 feature_extraction.cc:280]   Features:        17060
+I0619 18:17:13.886473  3845 feature_extraction.cc:258] Processed file [40/43]
+I0619 18:17:13.886541  3845 feature_extraction.cc:261]   Name:            0033.jpg
+I0619 18:17:13.886547  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:13.886549  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:13.886570  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:13.886597  3845 feature_extraction.cc:280]   Features:        24228
+I0619 18:17:14.360651  3845 feature_extraction.cc:258] Processed file [41/43]
+I0619 18:17:14.360715  3845 feature_extraction.cc:261]   Name:            0024.jpg
+I0619 18:17:14.360720  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:14.360723  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:14.360724  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:14.360731  3845 feature_extraction.cc:280]   Features:        27349
+I0619 18:17:14.722841  3845 feature_extraction.cc:258] Processed file [42/43]
+I0619 18:17:14.722910  3845 feature_extraction.cc:261]   Name:            0038.jpg
+I0619 18:17:14.722916  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:14.722918  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:14.722921  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:14.722949  3845 feature_extraction.cc:280]   Features:        19810
+I0619 18:17:15.287684  3845 feature_extraction.cc:258] Processed file [43/43]
+I0619 18:17:15.287750  3845 feature_extraction.cc:261]   Name:            0025.jpg
+I0619 18:17:15.287756  3845 feature_extraction.cc:270]   Dimensions:      4284 x 5712
+I0619 18:17:15.287758  3845 feature_extraction.cc:273]   Camera:          #1 - SIMPLE_RADIAL
+I0619 18:17:15.287761  3845 feature_extraction.cc:276]   Focal Length:    6854.40px
+I0619 18:17:15.287770  3845 feature_extraction.cc:280]   Features:        26063
+I0619 18:17:15.293004  3780 timer.cc:91] Elapsed time: 0.507 [minutes]
+
+
+
+(nerf) kevin@Venus:~/projects/Gaussian/data/my_object$ colmap exhaustive_matcher \
+    --database_path database.db \
+    --SiftMatching.guided_matching 1
+I0619 18:33:12.435086  3896 misc.cc:44]
+==============================================================================
+Feature matching
+==============================================================================
+I0619 18:33:12.440143  3897 sift.cc:1426] Creating SIFT GPU feature matcher
+I0619 18:33:12.445423  3931 sift.cc:1426] Creating SIFT GPU feature matcher
+I0619 18:33:12.678436  3896 pairing.cc:168] Generating exhaustive image pairs...
+I0619 18:33:12.678507  3896 pairing.cc:201] Matching block [1/1, 1/1]
+I0619 18:33:16.946043  3896 feature_matching.cc:46] in 4.268s
+I0619 18:33:16.960732  3896 timer.cc:91] Elapsed time: 0.075 [minutes]
+
+
+
+(nerf) kevin@Venus:~/projects/Gaussian/data/my_object$ colmap mapper \
+    --database_path database.db \
+    --image_path    input \
+    --output_path   sparse
+I0619 18:34:42.442260  3937 incremental_pipeline.cc:237] Loading database
+I0619 18:34:42.445647  3937 database_cache.cc:66] Loading cameras...
+I0619 18:34:42.445729  3937 database_cache.cc:76]  1 in 0.000s
+I0619 18:34:42.445765  3937 database_cache.cc:84] Loading matches...
+I0619 18:34:42.484581  3937 database_cache.cc:89]  901 in 0.039s
+I0619 18:34:42.484633  3937 database_cache.cc:105] Loading images...
+I0619 18:34:42.527653  3937 database_cache.cc:153]  43 in 0.043s (connected 43)
+I0619 18:34:42.527714  3937 database_cache.cc:164] Loading pose priors...
+I0619 18:34:42.527786  3937 database_cache.cc:175]  0 in 0.000s
+I0619 18:34:42.527806  3937 database_cache.cc:184] Building correspondence graph...
+I0619 18:34:42.626854  3937 database_cache.cc:210]  in 0.099s (ignored 0)
+I0619 18:34:42.627051  3937 timer.cc:91] Elapsed time: 0.003 [minutes]
+I0619 18:34:42.630333  3937 incremental_pipeline.cc:282] Finding good initial image pair
+I0619 18:34:42.907471  3937 incremental_pipeline.cc:306] Initializing with image pair #15 and #23
+I0619 18:34:42.914669  3937 incremental_pipeline.cc:311] Global bundle adjustment
+I0619 18:34:43.352077  3937 incremental_pipeline.cc:390] Registering image #21 (3)
+I0619 18:34:43.352137  3937 incremental_pipeline.cc:393] => Image sees 1764 / 13749 points
+I0619 18:34:43.925691  3937 incremental_pipeline.cc:42] Retriangulation and Global bundle adjustment
+I0619 18:34:44.337952  3937 incremental_pipeline.cc:390] Registering image #18 (4)
+I0619 18:34:44.338016  3937 incremental_pipeline.cc:393] => Image sees 3673 / 12389 points
+I0619 18:34:45.329149  3937 incremental_pipeline.cc:42] Retriangulation and Global bundle adjustment
+I0619 18:34:45.739802  3937 incremental_pipeline.cc:390] Registering image #36 (5)
+I0619 18:34:45.739867  3937 incremental_pipeline.cc:393] => Image sees 3768 / 7757 points
+I0619 18:34:46.849574  3937 incremental_pipeline.cc:42] Retriangulation and Global bundle adjustment
+I0619 18:34:47.273694  3937 incremental_pipeline.cc:390] Registering image #24 (6)
+I0619 18:34:47.273757  3937 incremental_pipeline.cc:393] => Image sees 4220 / 9317 points
+I0619 18:34:48.639640  3937 incremental_pipeline.cc:42] Retriangulation and Global bundle adjustment
+I0619 18:34:49.090364  3937 incremental_pipeline.cc:390] Registering image #22 (7)
+I0619 18:34:49.090430  3937 incremental_pipeline.cc:393] => Image sees 5232 / 13482 points
+I0619 18:34:50.028671  3937 incremental_pipeline.cc:42] Retriangulation and Global bundle adjustment
+I0619 18:34:50.607497  3937 incremental_pipeline.cc:390] Registering image #41 (8)
+I0619 18:34:50.607560  3937 incremental_pipeline.cc:393] => Image sees 5440 / 12034 points
+I0619 18:34:51.503095  3937 incremental_pipeline.cc:42] Retriangulation and Global bundle adjustment
+I0619 18:34:52.552723  3937 incremental_pipeline.cc:390] Registering image #19 (9)
+I0619 18:34:52.552778  3937 incremental_pipeline.cc:393] => Image sees 5450 / 8599 points
+I0619 18:34:53.478447  3937 incremental_pipeline.cc:42] Retriangulation and Global bundle adjustment
+I0619 18:34:54.640972  3937 incremental_pipeline.cc:390] Registering image #17 (10)
+I0619 18:34:54.641027  3937 incremental_pipeline.cc:393] => Image sees 6310 / 10598 points
+I0619 18:34:55.567276  3937 incremental_pipeline.cc:42] Retriangulation and Global bundle adjustment
+I0619 18:34:56.801040  3937 incremental_pipeline.cc:390] Registering image #42 (11)
+I0619 18:34:56.801095  3937 incremental_pipeline.cc:393] => Image sees 7050 / 11478 points
+I0619 18:34:57.791198  3937 incremental_pipeline.cc:42] Retriangulation and Global bundle adjustment
+I0619 18:34:59.201752  3937 incremental_pipeline.cc:390] Registering image #43 (12)
+I0619 18:34:59.201818  3937 incremental_pipeline.cc:393] => Image sees 5828 / 10257 points
+I0619 18:35:00.189385  3937 incremental_pipeline.cc:390] Registering image #33 (13)
+I0619 18:35:00.189455  3937 incremental_pipeline.cc:393] => Image sees 5532 / 7468 points
+I0619 18:35:01.010941  3937 incremental_pipeline.cc:42] Retriangulation and Global bundle adjustment
+I0619 18:35:02.508195  3937 incremental_pipeline.cc:390] Registering image #32 (14)
+I0619 18:35:02.508257  3937 incremental_pipeline.cc:393] => Image sees 3735 / 7512 points
+I0619 18:35:03.310552  3937 incremental_pipeline.cc:390] Registering image #29 (15)
+I0619 18:35:03.310614  3937 incremental_pipeline.cc:393] => Image sees 5721 / 12083 points
+I0619 18:35:04.129369  3937 incremental_pipeline.cc:42] Retriangulation and Global bundle adjustment
+I0619 18:35:05.817402  3937 incremental_pipeline.cc:390] Registering image #11 (16)
+I0619 18:35:05.817474  3937 incremental_pipeline.cc:393] => Image sees 6229 / 10688 points
+I0619 18:35:06.800115  3937 incremental_pipeline.cc:390] Registering image #5 (17)
+I0619 18:35:06.800180  3937 incremental_pipeline.cc:393] => Image sees 6578 / 9441 points
+I0619 18:35:07.709548  3937 incremental_pipeline.cc:42] Retriangulation and Global bundle adjustment
+I0619 18:35:10.455924  3937 incremental_pipeline.cc:390] Registering image #39 (18)
+I0619 18:35:10.455986  3937 incremental_pipeline.cc:393] => Image sees 4876 / 10686 points
+I0619 18:35:11.344961  3937 incremental_pipeline.cc:390] Registering image #20 (19)
+I0619 18:35:11.345024  3937 incremental_pipeline.cc:393] => Image sees 4787 / 7145 points
+I0619 18:35:12.103621  3937 incremental_pipeline.cc:42] Retriangulation and Global bundle adjustment
+I0619 18:35:14.650162  3937 incremental_pipeline.cc:390] Registering image #1 (20)
+I0619 18:35:14.650225  3937 incremental_pipeline.cc:393] => Image sees 5760 / 7919 points
+I0619 18:35:15.602452  3937 incremental_pipeline.cc:390] Registering image #6 (21)
+I0619 18:35:15.602514  3937 incremental_pipeline.cc:393] => Image sees 6189 / 9149 points
+I0619 18:35:16.454423  3937 incremental_pipeline.cc:42] Retriangulation and Global bundle adjustment
+I0619 18:35:19.157646  3937 incremental_pipeline.cc:390] Registering image #12 (22)
+I0619 18:35:19.157711  3937 incremental_pipeline.cc:393] => Image sees 7339 / 9093 points
+I0619 18:35:20.292042  3937 incremental_pipeline.cc:390] Registering image #16 (23)
+I0619 18:35:20.292104  3937 incremental_pipeline.cc:393] => Image sees 5493 / 8967 points
+I0619 18:35:21.156762  3937 incremental_pipeline.cc:390] Registering image #37 (24)
+I0619 18:35:21.156827  3937 incremental_pipeline.cc:393] => Image sees 6557 / 9158 points
+I0619 18:35:22.018123  3937 incremental_pipeline.cc:42] Retriangulation and Global bundle adjustment
+I0619 18:35:26.028069  3937 incremental_pipeline.cc:390] Registering image #4 (25)
+I0619 18:35:26.028129  3937 incremental_pipeline.cc:393] => Image sees 6319 / 8116 points
+I0619 18:35:26.958590  3937 incremental_pipeline.cc:390] Registering image #7 (26)
+I0619 18:35:26.958655  3937 incremental_pipeline.cc:393] => Image sees 6540 / 7801 points
+I0619 18:35:27.980068  3937 incremental_pipeline.cc:390] Registering image #14 (27)
+I0619 18:35:27.980132  3937 incremental_pipeline.cc:393] => Image sees 7010 / 8549 points
+I0619 18:35:28.982928  3937 incremental_pipeline.cc:42] Retriangulation and Global bundle adjustment
+I0619 18:35:32.017449  3937 incremental_pipeline.cc:390] Registering image #38 (28)
+I0619 18:35:32.017511  3937 incremental_pipeline.cc:393] => Image sees 4065 / 5893 points
+I0619 18:35:32.787508  3937 incremental_pipeline.cc:390] Registering image #2 (29)
+I0619 18:35:32.787578  3937 incremental_pipeline.cc:393] => Image sees 5448 / 7893 points
+I0619 18:35:33.636121  3937 incremental_pipeline.cc:390] Registering image #9 (30)
+I0619 18:35:33.636181  3937 incremental_pipeline.cc:393] => Image sees 6200 / 7505 points
+I0619 18:35:34.520056  3937 incremental_pipeline.cc:42] Retriangulation and Global bundle adjustment
+I0619 18:35:37.548285  3937 incremental_pipeline.cc:390] Registering image #40 (31)
+I0619 18:35:37.548363  3937 incremental_pipeline.cc:393] => Image sees 4718 / 6176 points
+I0619 18:35:38.427711  3937 incremental_pipeline.cc:390] Registering image #3 (32)
+I0619 18:35:38.427772  3937 incremental_pipeline.cc:393] => Image sees 5490 / 7503 points
+I0619 18:35:39.224575  3937 incremental_pipeline.cc:390] Registering image #27 (33)
+I0619 18:35:39.224640  3937 incremental_pipeline.cc:393] => Image sees 4575 / 7665 points
+I0619 18:35:39.947045  3937 incremental_pipeline.cc:42] Retriangulation and Global bundle adjustment
+I0619 18:35:43.223532  3937 incremental_pipeline.cc:390] Registering image #25 (34)
+I0619 18:35:43.223592  3937 incremental_pipeline.cc:393] => Image sees 4863 / 8527 points
+I0619 18:35:44.028084  3937 incremental_pipeline.cc:390] Registering image #34 (35)
+I0619 18:35:44.028142  3937 incremental_pipeline.cc:393] => Image sees 6412 / 7823 points
+I0619 18:35:45.009088  3937 incremental_pipeline.cc:390] Registering image #35 (36)
+I0619 18:35:45.009150  3937 incremental_pipeline.cc:393] => Image sees 5896 / 7111 points
+I0619 18:35:46.009884  3937 incremental_pipeline.cc:390] Registering image #28 (37)
+I0619 18:35:46.009943  3937 incremental_pipeline.cc:393] => Image sees 2587 / 4866 points
+I0619 18:35:46.474416  3937 incremental_pipeline.cc:42] Retriangulation and Global bundle adjustment
+I0619 18:35:50.098645  3937 incremental_pipeline.cc:390] Registering image #26 (38)
+I0619 18:35:50.098708  3937 incremental_pipeline.cc:393] => Image sees 2644 / 4902 points
+I0619 18:35:50.645816  3937 incremental_pipeline.cc:390] Registering image #13 (39)
+I0619 18:35:50.645882  3937 incremental_pipeline.cc:393] => Image sees 3251 / 4983 points
+I0619 18:35:51.264963  3937 incremental_pipeline.cc:390] Registering image #30 (40)
+I0619 18:35:51.265027  3937 incremental_pipeline.cc:393] => Image sees 4813 / 6679 points
+I0619 18:35:52.060287  3937 incremental_pipeline.cc:390] Registering image #10 (41)
+I0619 18:35:52.060350  3937 incremental_pipeline.cc:393] => Image sees 3340 / 4726 points
+I0619 18:35:52.511065  3937 incremental_pipeline.cc:42] Retriangulation and Global bundle adjustment
+I0619 18:35:57.775588  3937 incremental_pipeline.cc:390] Registering image #8 (42)
+I0619 18:35:57.775650  3937 incremental_pipeline.cc:393] => Image sees 2722 / 3875 points
+I0619 18:35:58.320276  3937 incremental_pipeline.cc:390] Registering image #31 (43)
+I0619 18:35:58.320341  3937 incremental_pipeline.cc:393] => Image sees 4273 / 5406 points
+I0619 18:35:59.085052  3937 incremental_pipeline.cc:42] Retriangulation and Global bundle adjustment
+I0619 18:36:02.806524  3937 timer.cc:91] Elapsed time: 1.339 [minutes]
+
+
+
+
+
+
+
+
+2 undistort + 多分辨率生成（convert.py）
+首先重新确认规划了一下项目结构，然后执行convert.py
+(nerf) kevin@Venus:~/projects/Gaussian/extern/gaussian-splatting$ cd ../../data/my_object
+(nerf) kevin@Venus:~/projects/Gaussian/data/my_object$ mkdir -p distorted/sparse
+(nerf) kevin@Venus:~/projects/Gaussian/data/my_object$ mv database.db                         distorted/
+(nerf) kevin@Venus:~/projects/Gaussian/data/my_object$ mv sparse/0                            distorted/sparse/
+(nerf) kevin@Venus:~/projects/Gaussian/data/my_object$ python convert.py -s ../../data/my_object --skip_matching --resize --no_gpu
+python: can't open file '/home/kevin/projects/Gaussian/data/my_object/convert.py': [Errno 2] No such file or directory
+(nerf) kevin@Venus:~/projects/Gaussian/data/my_object$ cd ~/projects/Gaussian/extern/gaussian-splatting
+
+
+
+(nerf) kevin@Venus:~/projects/Gaussian/extern/gaussian-splatting$ python convert.py \
+  -s ../../data/my_object \
+  --skip_matching \
+  --resize \
+  --no_gpu
+I0619 20:42:10.972762  8102 misc.cc:44]
+==============================================================================
+Reading reconstruction
+==============================================================================
+I0619 20:42:11.022434  8102 image.cc:347] => Reconstruction with 43 images and 58953 points
+I0619 20:42:11.022496  8102 misc.cc:44]
+==============================================================================
+Image undistortion
+==============================================================================
+I0619 20:42:11.039637  8102 undistortion.cc:215] Undistorting image [1/43]
+I0619 20:42:15.439455  8102 undistortion.cc:215] Undistorting image [2/43]
+I0619 20:42:15.699282  8102 undistortion.cc:215] Undistorting image [3/43]
+I0619 20:42:15.699323  8102 undistortion.cc:215] Undistorting image [4/43]
+I0619 20:42:16.100353  8102 undistortion.cc:215] Undistorting image [5/43]
+I0619 20:42:16.100428  8102 undistortion.cc:215] Undistorting image [6/43]
+I0619 20:42:16.100436  8102 undistortion.cc:215] Undistorting image [7/43]
+I0619 20:42:16.100438  8102 undistortion.cc:215] Undistorting image [8/43]
+I0619 20:42:16.100441  8102 undistortion.cc:215] Undistorting image [9/43]
+I0619 20:42:16.119760  8102 undistortion.cc:215] Undistorting image [10/43]
+I0619 20:42:16.119838  8102 undistortion.cc:215] Undistorting image [11/43]
+I0619 20:42:16.137989  8102 undistortion.cc:215] Undistorting image [12/43]
+I0619 20:42:16.157290  8102 undistortion.cc:215] Undistorting image [13/43]
+I0619 20:42:16.157356  8102 undistortion.cc:215] Undistorting image [14/43]
+I0619 20:42:16.157403  8102 undistortion.cc:215] Undistorting image [15/43]
+I0619 20:42:16.157449  8102 undistortion.cc:215] Undistorting image [16/43]
+I0619 20:42:16.157495  8102 undistortion.cc:215] Undistorting image [17/43]
+I0619 20:42:16.157508  8102 undistortion.cc:215] Undistorting image [18/43]
+I0619 20:42:16.157511  8102 undistortion.cc:215] Undistorting image [19/43]
+I0619 20:42:16.157513  8102 undistortion.cc:215] Undistorting image [20/43]
+I0619 20:42:16.157516  8102 undistortion.cc:215] Undistorting image [21/43]
+I0619 20:42:16.157552  8102 undistortion.cc:215] Undistorting image [22/43]
+I0619 20:42:16.157598  8102 undistortion.cc:215] Undistorting image [23/43]
+I0619 20:42:16.157610  8102 undistortion.cc:215] Undistorting image [24/43]
+I0619 20:42:16.157613  8102 undistortion.cc:215] Undistorting image [25/43]
+I0619 20:42:16.157615  8102 undistortion.cc:215] Undistorting image [26/43]
+I0619 20:42:16.157617  8102 undistortion.cc:215] Undistorting image [27/43]
+I0619 20:42:16.157620  8102 undistortion.cc:215] Undistorting image [28/43]
+I0619 20:42:16.157622  8102 undistortion.cc:215] Undistorting image [29/43]
+I0619 20:42:16.157624  8102 undistortion.cc:215] Undistorting image [30/43]
+I0619 20:42:16.157626  8102 undistortion.cc:215] Undistorting image [31/43]
+I0619 20:42:16.157662  8102 undistortion.cc:215] Undistorting image [32/43]
+I0619 20:42:16.157693  8102 undistortion.cc:215] Undistorting image [33/43]
+I0619 20:42:18.867545  8102 undistortion.cc:215] Undistorting image [34/43]
+I0619 20:42:18.867596  8102 undistortion.cc:215] Undistorting image [35/43]
+I0619 20:42:18.867602  8102 undistortion.cc:215] Undistorting image [36/43]
+I0619 20:42:19.082894  8102 undistortion.cc:215] Undistorting image [37/43]
+I0619 20:42:19.082945  8102 undistortion.cc:215] Undistorting image [38/43]
+I0619 20:42:19.082950  8102 undistortion.cc:215] Undistorting image [39/43]
+I0619 20:42:19.082970  8102 undistortion.cc:215] Undistorting image [40/43]
+I0619 20:42:19.082993  8102 undistortion.cc:215] Undistorting image [41/43]
+I0619 20:42:19.082998  8102 undistortion.cc:215] Undistorting image [42/43]
+I0619 20:42:19.182044  8102 undistortion.cc:215] Undistorting image [43/43]
+I0619 20:42:19.182121  8102 undistortion.cc:225] Writing reconstruction...
+I0619 20:42:19.308064  8102 undistortion.cc:230] Writing configuration...
+I0619 20:42:19.308292  8102 undistortion.cc:234] Writing scripts...
+I0619 20:42:19.308473  8102 timer.cc:91] Elapsed time: 0.138 [minutes]
+Copying and resizing...
+Done.
+
+
+
+
+
+
+
+
+
+3 第一次训练
+(nerf) kevin@Venus:~/projects/Gaussian/extern/gaussian-splatting$ python train.py \
+  -s ../../data/my_object \
+  -m ../../outputs/my_object_3dgs \
+  --iterations 30000 \
+  --test_iterations 5000 15000 30000 \
+  --save_iterations 5000 15000 30000 \
+  -r 2 \
+  --eval
+Optimizing ../../outputs/my_object_3dgs
+Output folder: ../../outputs/my_object_3dgs [19/06 21:04:40]
+------------LLFF HOLD------------- [19/06 21:04:41]
+Reading camera 43/43 [19/06 21:04:41]
+Converting point3d.bin to .ply, will happen only the first time you open the scene. [19/06 21:04:41]
+Loading Training Cameras [19/06 21:04:41]
+Loading Test Cameras [19/06 21:04:49]
+Number of points at initialisation :  58953 [19/06 21:04:51]
+Training progress:  17%|███▌                 | 5000/30000 [08:30<30:38, 13.60it/s, Loss=0.0379683, Depth Loss=0.0000000]
+[ITER 5000] Evaluating test: L1 0.038288536171118416 PSNR 22.522245407104492 [19/06 21:13:37]
+Training progress:  17%|███▌                 | 5000/30000 [08:50<30:38, 13.60it/s, Loss=0.0379683, Depth Loss=0.0000000]
+[ITER 5000] Evaluating train: L1 0.01708707381039858 PSNR 30.24393997192383 [19/06 21:13:51]
+
+[ITER 5000] Saving Gaussians [19/06 21:13:52]
+Training progress:  50%|██████████          | 15000/30000 [23:40<21:34, 11.59it/s, Loss=0.0228661, Depth Loss=0.0000000]
+[ITER 15000] Evaluating test: L1 0.04551105573773384 PSNR 22.143324057261147 [19/06 21:28:39]
+Training progress:  50%|██████████          | 15000/30000 [23:51<21:34, 11.59it/s, Loss=0.0228661, Depth Loss=0.0000000]
+[ITER 15000] Evaluating train: L1 0.012380596064031125 PSNR 32.99058303833008 [19/06 21:28:46]
+
+[ITER 15000] Saving Gaussians [19/06 21:28:46]
+Training progress:  66%|█████████████▏      | 19850/30000 [31:03<14:55, 11.33it/s, Loss=0.0210521, Depth Loss=0.0000000]Traceback (most recent call last):
+  File "/home/kevin/projects/Gaussian/extern/gaussian-splatting/train.py", line 282, in <module>
+    training(lp.extract(args), op.extract(args), pp.extract(args), args.test_iterations, args.save_iterations, args.checkpoint_iterations, args.start_checkpoint, args.debug_from)
+  File "/home/kevin/projects/Gaussian/extern/gaussian-splatting/train.py", line 111, in training
+    render_pkg = render(viewpoint_cam, gaussians, pipe, bg, use_trained_exp=dataset.train_test_exp, separate_sh=SPARSE_ADAM_AVAILABLE)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kevin/projects/Gaussian/extern/gaussian-splatting/gaussian_renderer/__init__.py", line 123, in render
+    "visibility_filter" : (radii > 0).nonzero(),
+                          ^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: CUDA error: out of memory
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+Training progress:  66%|█████████████▏      | 19850/30000 [31:03<15:53, 10.65it/s, Loss=0.0210521, Depth Loss=0.0000000]
+
+
+
+
+爆掉显存，第二次训练：
+(nerf) kevin@Venus:~/projects/Gaussian/extern/gaussian-splatting$ python train.py \
+  -s ../../data/my_object \
+  -m ../../outputs/my_object_3dgs_r2 \
+  --iterations 30000 \
+  -r 2 \
+  --data_device cpu \
+  --densify_until_iter 15000 \
+  --densify_grad_threshold 0.0005 \
+  --test_iterations 5000 15000 30000 \
+  --save_iterations 15000 30000 \
+  --checkpoint_iterations 5000 15000 30000 \
+  --eval
+Optimizing ../../outputs/my_object_3dgs_r2
+Output folder: ../../outputs/my_object_3dgs_r2 [19/06 21:50:44]
+------------LLFF HOLD------------- [19/06 21:50:44]
+Reading camera 43/43 [19/06 21:50:44]
+Loading Training Cameras [19/06 21:50:44]
+Loading Test Cameras [19/06 21:50:53]
+Number of points at initialisation :  58953 [19/06 21:50:55]
+Training progress:  17%|███▌                 | 5000/30000 [08:44<29:06, 14.32it/s, Loss=0.0522116, Depth Loss=0.0000000]
+[ITER 5000] Evaluating test: L1 0.053384738663832344 PSNR 19.136380036671955 [19/06 21:59:54]
+Training progress:  17%|███▌                 | 5000/30000 [09:00<29:06, 14.32it/s, Loss=0.0522116, Depth Loss=0.0000000]
+[ITER 5000] Evaluating train: L1 0.027374525740742686 PSNR 24.589095306396487 [19/06 22:00:09]
+
+[ITER 5000] Saving Checkpoint [19/06 22:00:09]
+Training progress:  50%|██████████          | 15000/30000 [22:01<18:42, 13.36it/s, Loss=0.0329578, Depth Loss=0.0000000]
+[ITER 15000] Evaluating test: L1 0.05695492370675007 PSNR 19.459857781728108 [19/06 22:13:04]
+
+[ITER 15000] Evaluating train: L1 0.018078703433275223 PSNR 28.09054107666016 [19/06 22:13:11]
+
+[ITER 15000] Saving Gaussians [19/06 22:13:11]
+
+[ITER 15000] Saving Checkpoint [19/06 22:13:12]
+Training progress:  73%|██████████████▋     | 21970/30000 [32:04<10:43, 12.48it/s, Loss=0.0333796, Depth Loss=0.0000000]Traceback (most recent call last):
+  File "/home/kevin/projects/Gaussian/extern/gaussian-splatting/train.py", line 282, in <module>
+    training(lp.extract(args), op.extract(args), pp.extract(args), args.test_iterations, args.save_iterations, args.checkpoint_iterations, args.start_checkpoint, args.debug_from)
+  File "/home/kevin/projects/Gaussian/extern/gaussian-splatting/train.py", line 111, in training
+    render_pkg = render(viewpoint_cam, gaussians, pipe, bg, use_trained_exp=dataset.train_test_exp, separate_sh=SPARSE_ADAM_AVAILABLE)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kevin/projects/Gaussian/extern/gaussian-splatting/gaussian_renderer/__init__.py", line 123, in render
+    "visibility_filter" : (radii > 0).nonzero(),
+                          ^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: CUDA error: out of memory
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+Training progress:  73%|██████████████▋     | 21970/30000 [32:04<11:43, 11.41it/s, Loss=0.0333796, Depth Loss=0.0000000]
+
+
+
+
+
+显存再次爆掉，第三次训练（在第二次训练基础上继续训练）
+(nerf) kevin@Venus:~/projects/Gaussian/extern/gaussian-splatting$ python train.py \
+  -s ../../data/my_object \
+  -m ../../outputs/my_object_3dgs_r2 \
+  --start_checkpoint ../../outputs/my_object_3dgs_r2/chkpnt15000.pth \
+  --iterations 30000 \
+  -r 2 \
+  --data_device cpu \
+  --densify_until_iter 10000 \
+  --densify_grad_threshold 0.001 \
+  --test_iterations 30000 \
+  --save_iterations 30000 \
+  --checkpoint_iterations 30000 \
+  --disable_viewer
+Optimizing ../../outputs/my_object_3dgs_r2
+Output folder: ../../outputs/my_object_3dgs_r2 [19/06 22:44:09]
+Reading camera 43/43 [19/06 22:44:09]
+Loading Training Cameras [19/06 22:44:09]
+Loading Test Cameras [19/06 22:44:19]
+Number of points at initialisation :  58953 [19/06 22:44:19]
+Training progress: 100%|████████████████████| 15000/15000 [26:48<00:00,  9.32it/s, Loss=0.0306058, Depth Loss=0.0000000]
+
+[ITER 30000] Evaluating train: L1 0.01590853426605463 PSNR 30.610686111450196 [19/06 23:11:26]
+
+[ITER 30000] Saving Gaussians [19/06 23:11:26]
+
+[ITER 30000] Saving Checkpoint [19/06 23:11:27]
+
+Training complete. [19/06 23:11:27]
+
+
+4  渲染
+在数据集中 没有任何相机被标记为“test”（convert.py 默认把 43 张图全部划为 train
+因此，直接渲染全部相机（不过单体物体实验通常接受全帧评估）
+
+(nerf) kevin@Venus:~/projects/Gaussian/extern/gaussian-splatting$ python render.py \
+  --source_path ../../data/my_object \
+  --model_path  ../../outputs/my_object_3dgs_r2 \
+  --resolution 2 \
+  --iteration 30000
+Looking for config file in ../../outputs/my_object_3dgs_r2/cfg_args
+Config file found: ../../outputs/my_object_3dgs_r2/cfg_args
+Rendering ../../outputs/my_object_3dgs_r2
+Loading trained model at iteration 30000 [19/06 23:59:48]
+Reading camera 43/43 [19/06 23:59:48]
+Loading Training Cameras [19/06 23:59:48]
+Loading Test Cameras [19/06 23:59:58]
+Rendering progress: 100%|███████████████████████████████████████████████████████████████| 43/43 [01:46<00:00,  2.47s/it]
+Rendering progress: 0it [00:00, ?it/s]
+
+
+
+
+合成视频
+(nerf) kevin@Venus:~/projects/Gaussian/extern/gaussian-splatting$ ffmpeg -y -framerate 30 -i ../../outputs/my_object_3dgs_r2/train/ours_30000/renders/%05d.png -c:v libx264 -pix_fmt yuv420p ../../outputs/my_object_3dgs_r2/train_video_r2.mp4
+ffmpeg version 9c33b2f Copyright (c) 2000-2021 the FFmpeg developers
+  built with gcc 9.3.0 (crosstool-NG 1.24.0.133_b0863d8_dirty)
+  configuration: --prefix=/home/kevin/anaconda3/envs/nerf --cc=/home/conda/feedstock_root/build_artifacts/ffmpeg_1627813612080/_build_env/bin/x86_64-conda-linux-gnu-cc --disable-doc --disable-openssl --enable-avresample --enable-gnutls --enable-gpl --enable-hardcoded-tables --enable-libfreetype --enable-libopenh264 --enable-libx264 --enable-pic --enable-pthreads --enable-shared --enable-static --enable-version3 --enable-zlib --enable-libmp3lame --pkg-config=/home/conda/feedstock_root/build_artifacts/ffmpeg_1627813612080/_build_env/bin/pkg-config
+  libavutil      56. 51.100 / 56. 51.100
+  libavcodec     58. 91.100 / 58. 91.100
+  libavformat    58. 45.100 / 58. 45.100
+  libavdevice    58. 10.100 / 58. 10.100
+  libavfilter     7. 85.100 /  7. 85.100
+  libavresample   4.  0.  0 /  4.  0.  0
+  libswscale      5.  7.100 /  5.  7.100
+  libswresample   3.  7.100 /  3.  7.100
+  libpostproc    55.  7.100 / 55.  7.100
+Input #0, image2, from '../../outputs/my_object_3dgs_r2/train/ours_30000/renders/%05d.png':
+  Duration: 00:00:01.43, start: 0.000000, bitrate: N/A
+    Stream #0:0: Video: png, rgb24(pc), 2146x2866, 30 tbr, 30 tbn, 30 tbc
+Stream mapping:
+  Stream #0:0 -> #0:0 (png (native) -> h264 (libx264))
+Press [q] to stop, [?] for help
+[libx264 @ 0x56271f6ec8c0] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2 AVX512
+[libx264 @ 0x56271f6ec8c0] profile High, level 5.1, 4:2:0, 8-bit
+[libx264 @ 0x56271f6ec8c0] 264 - core 161 r3030M 8bd6d28 - H.264/MPEG-4 AVC codec - Copyleft 2003-2020 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=48 lookahead_threads=8 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mp4, to '../../outputs/my_object_3dgs_r2/train_video_r2.mp4':
+  Metadata:
+    encoder         : Lavf58.45.100
+    Stream #0:0: Video: h264 (libx264) (avc1 / 0x31637661), yuv420p, 2146x2866, q=-1--1, 30 fps, 15360 tbn, 30 tbc
+    Metadata:
+      encoder         : Lavc58.91.100 libx264
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+frame=   43 fps= 21 q=-1.0 Lsize=    4600kB time=00:00:01.33 bitrate=28262.2kbits/s speed=0.659x
+video:4599kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.024079%
+[libx264 @ 0x56271f6ec8c0] frame I:5     Avg QP:22.11  size:149795
+[libx264 @ 0x56271f6ec8c0] frame P:36    Avg QP:24.45  size:106393
+[libx264 @ 0x56271f6ec8c0] frame B:2     Avg QP:24.45  size: 64830
+[libx264 @ 0x56271f6ec8c0] consecutive B-frames: 90.7%  9.3%  0.0%  0.0%
+[libx264 @ 0x56271f6ec8c0] mb I  I16..4: 18.0% 75.9%  6.1%
+[libx264 @ 0x56271f6ec8c0] mb P  I16..4: 17.4% 65.3%  3.4%  P16..4:  8.0%  3.1%  0.6%  0.0%  0.0%    skip: 2.3%
+[libx264 @ 0x56271f6ec8c0] mb B  I16..4:  7.6% 12.8%  0.3%  B16..8: 34.3%  9.8%  0.9%  direct: 4.3%  skip:30.0%  L0:62.0% L1:30.6% BI: 7.3%
+[libx264 @ 0x56271f6ec8c0] 8x8 transform intra:75.7% inter:88.8%
+[libx264 @ 0x56271f6ec8c0] coded y,uvDC,uvAC intra: 33.1% 35.6% 8.6% inter: 29.2% 27.2% 0.2%
+[libx264 @ 0x56271f6ec8c0] i16 v,h,dc,p: 19% 28%  5% 47%
+[libx264 @ 0x56271f6ec8c0] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 38% 16% 14%  5%  6%  8%  4%  6%  3%
+[libx264 @ 0x56271f6ec8c0] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 32% 12%  8%  5% 12% 15%  6%  8%  2%
+[libx264 @ 0x56271f6ec8c0] i8c dc,h,v,p: 65% 13% 18%  4%
+[libx264 @ 0x56271f6ec8c0] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x56271f6ec8c0] ref P L0: 68.2% 16.4% 12.1%  3.3%
+[libx264 @ 0x56271f6ec8c0] ref B L0: 93.7%  6.3%
+[libx264 @ 0x56271f6ec8c0] kb/s:26281.54
+
+
+
+
+为什么不必重训 / 重新划分测试集？
+metrics.py 默认“能找到 gt 就算测试集”——若缺少 renders/test，它就读取 renders/ours_* 里的全部视图作为评估对象
+。我们手动把全 43 帧放进 test/ours_30000，再配好 gt，就满足要求。
+
+原论文在单体物体实验（表 2）也是对全帧评估，无需专门留出测试帧（README “real-capture small object” 段落）
+
+
+(nerf) kevin@Venus:~/projects/Gaussian$ cp outputs/my_object_3dgs_r2/test/ours_30000/renders/*.png outputs/my_object_3dgs_r2/renders/ours_30000/
+(nerf) kevin@Venus:~/projects/Gaussian$ python extern/gaussian-splatting/metrics.py --model_paths outputs/my_object_3dgs_r2
+
+Scene: outputs/my_object_3dgs_r2
+Method: ours_30000
+Unable to compute metrics for model outputs/my_object_3dgs_r2
+(nerf) kevin@Venus:~/projects/Gaussian$ cp -r  outputs/my_object_3dgs_r2/train/ours_30000/gt \
+        outputs/my_object_3dgs_r2/test/ours_30000/
+(nerf) kevin@Venus:~/projects/Gaussian$ python extern/gaussian-splatting/metrics.py \
+       --model_paths outputs/my_object_3dgs_r2
+
+Scene: outputs/my_object_3dgs_r2
+Method: ours_30000
+Metric evaluation progress:   0%|                                                                | 0/43 [00:00<?, ?it/s]Downloading: "https://raw.githubusercontent.com/richzhang/PerceptualSimilarity/master/lpips/weights/v0.1/vgg.pth" to /home/kevin/.cache/torch/hub/checkpoints/vgg.pth
+100%|██████████████████████████████████████████████████████████████████████████████| 7.12k/7.12k [00:00<00:00, 1.15MB/s]
+Metric evaluation progress: 100%|███████████████████████████████████████████████████████| 43/43 [00:27<00:00,  1.57it/s]
+  SSIM :    0.9269703
+  PSNR :   29.7206612
+  LPIPS:    0.2956487
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
