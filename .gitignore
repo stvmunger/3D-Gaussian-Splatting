@@ -1,0 +1,13 @@
+colmap/
+
+data/my_object/distorted
+
+data/my_object/images_2
+
+data/my_object/images_4
+
+data/my_object/images_8
+
+data/my_object/input
+
+outputs/
