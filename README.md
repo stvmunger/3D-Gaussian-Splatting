@@ -11,10 +11,10 @@
 | 组件 | 版本 / 说明 |
 |------|-------------|
 | OS   | Ubuntu 22.04 (WSL2) |
-| Python | 3.11（conda）|
+| Python | 3.11|
 | CUDA | cu128 |
 | PyTorch | 2.7 |
-| COLMAP | 3.9（本地编译）|
+| COLMAP | 3.11（本地编译）|
 | FFmpeg | 4.4 |
 
 
@@ -115,7 +115,7 @@ python train.py \
 |iterations |30000 | 实际收敛轮次 |
 |densify_until_iter|10000|	1w 以后不再增点，减小显存|
 |densify_grad_threshold|1e-3|	调高阈值 → 剩余点更少|
-|data_device|	cpu|高斯属性放 CPU，可把显存控制在 ~3.5 GB
+|data_device|	cpu|高斯属性放 CPU，减小显存
 
 ## 5 渲染与视频
 ```
