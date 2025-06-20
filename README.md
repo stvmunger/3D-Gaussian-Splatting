@@ -18,8 +18,7 @@
 | FFmpeg | 4.4 |
 
 
-<details>
-<summary>一行命令安装</summary>
+一行命令安装
 
 ```bash
 conda env create -n gsplat -f extern/gaussian-splatting/environment.yml
